@@ -16,7 +16,7 @@ may need to do).
 included in this package is a shell script called 'refresh-chromium.sh' which uses
 'xdotool' to send messages to the Chromium browser through Xwindows.
 
-##Installation:
+## Installation:
 
 Install 'xdotool':
 ```
