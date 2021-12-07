@@ -19,6 +19,7 @@ class awSnap:
         self._pollingSecs = pollingSecs
         self._script = script
         self._stateFileName = CHROMIUM_STATE.format(user=user)
+        self._crashLoop()
 
     def _getCrashCount(self):
         """Read the state file (in json format) that chromium stores in the
@@ -45,7 +46,7 @@ class awSnap:
             baseCrashCount = self._getCrashCount()
             if baseCrashCount != None:
                 break
-            sleep(pollingSecs)
+            sleep(self._pollingSecs)
         logging.info('Base Crash Count is %d' % baseCrashCount)
 
         logging.info('Starting main loop')
@@ -55,11 +56,11 @@ class awSnap:
                 logging.info('Crash detected: crash number: {count}'.format(count=crashCount))
                 baseCrashCount = crashCount
                 os.system(self._script)
-            sleep(pollingSecs)
+            sleep(self._pollingSecs)
 
         logging.info('Exited')
 
-if __name__ == 'main':
+if __name__ == '__main__':
     awsnap = awSnap()
 
 
