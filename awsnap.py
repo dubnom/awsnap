@@ -17,7 +17,7 @@ class awSnap:
     def __init__(self, user=DEFAULT_USER, pollingSecs=DEFAULT_POLLING_SECS, script=DEFAULT_SCRIPT):
         self._user = user
         self._pollingSecs = pollingSecs
-        self._script = script
+        self._script = script.format(user=user)
         self._stateFileName = CHROMIUM_STATE.format(user=user)
         self._crashLoop()
 
